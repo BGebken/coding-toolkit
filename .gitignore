@@ -1,0 +1,15 @@
+# Claude Code local settings
+.claude/settings.local.json
+
+# Design handoff binary (the unpacked dir is kept for reference)
+_design_download/design.tar.gz
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Node (in case we add tooling later)
+node_modules/

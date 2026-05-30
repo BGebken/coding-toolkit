@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coder Addons · Theme Directions</title>
+<link rel="stylesheet" href="themes.css" />
+<style>
+  html, body { margin: 0; height: 100%; background: #ECEAE4; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+
+function Device() {
+  return (
+    <div className="device">
+      <div className="keys">
+        {Array.from({ length: 6 }).map((_, i) => <div className="key" key={i} />)}
+      </div>
+      <div className="dial" />
+    </div>
+  );
+}
+
+function Swatches({ colors }) {
+  return (
+    <div className="swatches">
+      {colors.map((c) => (
+        <div className="swatch" key={c}>
+          <div className="swatch-chip" style={{ background: c.startsWith('linear') ? undefined : c, backgroundImage: c.startsWith('linear') ? c : undefined }} />
+          <span className="swatch-hex">{c.startsWith('linear') ? 'grad' : c}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Tile(props) {
+  const t = props;
+  return (
+    <div className={"tile " + t.cls}>
+      <div className="tile-head">
+        <span className="tile-kicker">{t.num}</span>
+        <div>
+          <h2 className="tile-name">{t.name}</h2>
+          <p className="tile-tag">{t.tag}</p>
+        </div>
+      </div>
+
+      <Swatches colors={t.colors} />
+
+      <div className="type-spec">
+        <div className="type-row">
+          <div className="big-aa">Aa</div>
+          <div className="type-meta">
+            <span className="lbl">Display</span>
+            <span className="fd">{t.fontD}</span>
+            <span className="lbl" style={{ marginTop: 4 }}>Body</span>
+            <span className="fb">{t.fontB}</span>
+          </div>
+        </div>
+        <h3 className="spec-head">{t.headline}</h3>
+        <p className="spec-body">{t.body}</p>
+      </div>
+
+      <div className="product-card">
+        <Device />
+        <div className="product-meta">
+          <span className="badge">{t.badge}</span>
+          <h4>{t.product}</h4>
+          <p>{t.productDesc}</p>
+          <div className="price-row">
+            <span className="price">{t.price}</span>
+            <button className="btn btn-primary btn-sm">Add to kit</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="actions">
+        <button className="btn btn-primary">Browse addons</button>
+        <button className="btn btn-ghost">How it works</button>
+        <span className="chip">USB-C</span>
+      </div>
+    </div>
+  );
+}
+
+const THEMES = [
+  {
+    cls: 'theme-clean', num: '01', name: 'Clean & Minimal Light',
+    tag: 'Airy, study-desk friendly, approachable for first-time builders.',
+    colors: ['#FFFFFF', '#F7F8FA', '#0B0F19', '#2563EB', '#6B7280'],
+    fontD: 'Space Grotesk', fontB: 'Hanken Grotesk',
+    headline: 'Plug in. Code further.', 
+    body: 'Hardware copilots that snap onto any laptop and make AI pair-coding feel physical.',
+    badge: 'New', product: 'Macro Deck Pro', productDesc: '12-key programmable AI command deck', price: '$129',
+  },
+  {
+    cls: 'theme-futuristic', num: '02', name: 'Dark & Futuristic',
+    tag: 'Sci-fi command center — deep space navy, cyan signal glow.',
+    colors: ['#070B14', '#0E1626', '#E8F0FF', '#22D3EE', '#6366F1'],
+    fontD: 'Chakra Petch', fontB: 'IBM Plex Sans',
+    headline: 'Your terminal, in hardware.',
+    body: 'Tactile control surfaces engineered for students running agents on real machines.',
+    badge: 'Pro', product: 'Macro Deck Pro', productDesc: '12-key programmable AI command deck', price: '$129',
+  },
+  {
+    cls: 'theme-rainbow', num: '03', name: 'Neon Rainbow Tech',
+    tag: 'Holographic, vivid, hackathon energy — gradients everywhere.',
+    colors: ['#FF2DAF', '#7C3AED', '#22D3EE', '#FACC15', '#00E5A0'],
+    fontD: 'Sora', fontB: 'Outfit',
+    headline: 'Build louder.',
+    body: 'A marketplace of plug-and-play gear that turns any desk into a creative coding rig.',
+    badge: 'Hot', product: 'Prompt Dial', productDesc: 'Rotary controller for live prompt tuning', price: '$79',
+  },
+  {
+    cls: 'theme-glow', num: '04', name: 'Neon Dark Glow',
+    tag: 'One electric accent glowing on near-black. Focused, modern.',
+    colors: ['#0A0A0B', '#131316', '#F4F4F5', '#C6FF3A', '#85858E'],
+    fontD: 'Space Grotesk', fontB: 'Space Grotesk',
+    headline: 'Ship in the dark.',
+    body: 'Minimal black hardware with a single acid-lime signal — built for late-night sprints.',
+    badge: 'New', product: 'Context Keypad', productDesc: '6-key snippet & context launcher', price: '$59',
+  },
+  {
+    cls: 'theme-terminal', num: '05', name: 'Retro Terminal / Hacker',
+    tag: 'CRT phosphor, monospaced, BBS nostalgia with amber accents.',
+    colors: ['#04140A', '#07210F', '#5BFF8F', '#FFB000', '#36A862'],
+    fontD: 'VT323', fontB: 'IBM Plex Mono',
+    headline: 'sudo build faster',
+    body: 'Real keys, real dials, real green-screen energy. Gear for people who live in the shell.',
+    badge: 'v2.0', product: 'Macro Deck Pro', productDesc: '12-key programmable command deck', price: '$129',
+  },
+  {
+    cls: 'theme-brutalist', num: '06', name: 'Brutalist / Bold Type',
+    tag: 'Raw, oversized type, hard black borders and offset shadows.',
+    colors: ['#F3F1E9', '#FFFFFF', '#0A0A0A', '#FF4D00', '#1A1AFF'],
+    fontD: 'Archivo Black', fontB: 'Space Mono',
+    headline: 'Gear that works.',
+    body: 'No fluff. Honest hardware for students who want to code with both hands on the metal.',
+    badge: 'Drop', product: 'Macro Deck Pro', productDesc: '12-key programmable AI command deck', price: '$129',
+  },
+];
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="themes" title="Coder Addons — Theme Directions" subtitle="6 style tiles · hardware marketplace for AI-coding peripherals · for students">
+        {THEMES.map((t) => (
+          <DCArtboard id={t.cls} key={t.cls} label={t.num + ' · ' + t.name} width={460} height={660}>
+            <Tile {...t} />
+          </DCArtboard>
+        ))}
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
