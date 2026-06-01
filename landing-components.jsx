@@ -84,7 +84,7 @@ function TopBar({ theme, setTheme, homeHref = '' }) {
           <button className="icon-btn" aria-label="Cart"><span className="dot" />
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/></svg>
           </button>
-          <a className="btn btn-primary btn-sm" href="#catalog">Shop now</a>
+          <a className="btn btn-primary btn-sm" href={link('#catalog')}>Shop now</a>
         </div>
       </div>
     </header>
