@@ -69,21 +69,16 @@ function TopBar({ theme, setTheme, homeHref = '' }) {
   return (
     <header className="topbar">
       <div className="wrap topbar-inner">
-        <a className="brand" href={homeHref || '#'}><span className="mark" /> coder.addons</a>
+        <a className="brand" href={homeHref || '#'}><span className="mark" /> Coder Addons</a>
         <nav className="nav">
           <a href={link('#catalog')}>Catalog</a>
           <a href={link('#kits')}>Student Kits</a>
-          <a href="#">Docs</a>
-          <a href="#">Community</a>
         </nav>
         <div className="topbar-right">
           <div className="tswitch" role="tablist" aria-label="Theme">
             <button className={theme === 'theme-futuristic' ? 'on' : ''} onClick={() => setTheme('theme-futuristic')}>Futuristic</button>
             <button className={theme === 'theme-rainbow' ? 'on' : ''} onClick={() => setTheme('theme-rainbow')}>Rainbow</button>
           </div>
-          <button className="icon-btn" aria-label="Cart"><span className="dot" />
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M6 6 5 3H2"/></svg>
-          </button>
           <a className="btn btn-primary btn-sm" href={link('#catalog')}>Shop now</a>
         </div>
       </div>
@@ -243,9 +238,11 @@ function FooterCTA() {
       </section>
       <footer>
         <div className="wrap foot-inner">
-          <div className="brand"><span className="mark" /> coder.addons</div>
+          <a className="brand" href="index.html"><span className="mark" /> Coder Addons</a>
           <div className="foot-links">
-            <a href="#">Catalog</a><a href="#">Kits</a><a href="#">Docs</a><a href="#">Support</a><a href="#">Students</a>
+            <a href="index.html#catalog">Catalog</a>
+            <a href="index.html#kits">Student Kits</a>
+            <a href="ai-workstation.html">AI Workstation</a>
           </div>
           <div>© 2026 Coder Addons</div>
         </div>
