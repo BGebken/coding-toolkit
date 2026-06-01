@@ -106,7 +106,7 @@ function Hero({ theme }) {
           <a className="btn btn-ghost" href="#kits">See student kits</a>
         </div>
         <div className="stat-row">
-          <div className="stat"><div className="n grad-text">5</div><div className="l">products in lineup</div></div>
+          <div className="stat"><div className="n grad-text">6</div><div className="l">products in lineup</div></div>
           <div className="stat"><div className="n grad-text">AI</div><div className="l">tuning, built in</div></div>
           <div className="stat"><div className="n grad-text">$18+</div><div className="l">starter pricing</div></div>
         </div>
@@ -139,9 +139,10 @@ function Compat() {
 const PRODUCTS = [
   { name: 'micro:bit V2', kind: 'mini', image: './images/microbit-v2.jpg', desc: 'Pocket-sized board with 25 LEDs, buttons, mic, speaker and motion sensors. Block code, Python or both — the perfect first board.', tags: ['25 LEDs', 'Blocks + Python', 'Sensors'], price: '$18', tag: 'Start here', screen: 'HEART' },
   { name: 'Raspberry Pi 5 (4GB)', kind: 'deck', image: './images/raspberry-pi-5.jpg', desc: 'A tiny full Linux computer. The brain of your AI-coding workstation — runs local models, agents and a real IDE.', tags: ['Linux', '4GB RAM', 'HDMI 4K'], price: '$80', tag: 'The brain', screen: 'PI · BOOT' },
-  { name: 'Companion Touch 5"', kind: 'touch', size: 'sm', desc: 'A 5" touchscreen companion that lives beside your keyboard. Map prompts, models and code snippets to live touch tiles that swap as you code.', tags: ['5" touch', 'USB-C', 'Live macros'], price: '$120', tag: 'Companion', screen: 'AI · PANEL' },
-  { name: 'CodeDesk Touch 10"', kind: 'touch', size: 'lg', desc: 'A 10.1" multitouch display that pairs with your Pi (or laptop). Full-screen IDE, a panel-of-agents UI, or a giant terminal — your call.', tags: ['10.1" touch', 'USB-C + HDMI', 'Multitouch'], price: '$179', tag: 'Workstation', screen: 'IDE · LIVE' },
-  { name: 'AI Mix Console', kind: 'fader', size: 'lg', desc: 'Mixer-board layout with 8 faders, 8 rotary knobs and 16 programmable keys. Tune temperature, top-p, model blend weights and prompt presets like a producer.', tags: ['8 faders + 16 keys', 'USB-C', 'Per-app profiles'], price: '$249', tag: 'Pro tool', screen: 'MIX · 3CH' },
+  { name: 'Companion Touch 5"', kind: 'touch', size: 'sm', image: './images/companion-touch.jpg', desc: 'A 5" touchscreen companion that lives beside your keyboard. Map prompts, models and code snippets to live touch tiles that swap as you code.', tags: ['5" touch', 'USB-C', 'Live macros'], price: '$120', tag: 'Companion', screen: 'AI · PANEL' },
+  { name: 'CodeDesk Touch 10"', kind: 'touch', size: 'lg', image: './images/codedesk-touch.jpg', desc: 'A 10.1" multitouch display that pairs with your Pi (or laptop). Full-screen IDE, a panel-of-agents UI, or a giant terminal — your call.', tags: ['10.1" touch', 'USB-C + HDMI', 'Multitouch'], price: '$179', tag: 'Workstation', screen: 'IDE · LIVE' },
+  { name: 'AI Mix Console', kind: 'fader', size: 'lg', image: './images/mix-console.jpg', desc: 'Mixer-board layout with 8 faders, 8 rotary knobs and 16 programmable keys. Tune temperature, top-p, model blend weights and prompt presets like a producer.', tags: ['8 faders + 16 keys', 'USB-C', 'Per-app profiles'], price: '$249', tag: 'Pro tool', screen: 'MIX · 3CH' },
+  { name: 'Pocket Mix', kind: 'fader', size: 'sm', image: './images/pocket-mix.jpg', desc: 'A backpack-sized mixer with 4 faders, 4 knobs and 8 keys. Same tactile AI-tuning workflow as the big console, sized for a Chromebook on the kitchen table.', tags: ['4 faders + 8 keys', 'USB-C', 'Bus-powered'], price: '$89', tag: 'Portable', screen: 'MIX · 2CH' },
 ];
 function ProductCard({ p }) {
   return (
@@ -172,7 +173,7 @@ function Catalog() {
       <div className="sec-head">
         <div>
           <h2>The catalog</h2>
-          <p>From your first board to a full AI-coding workstation — five pieces, one shared workflow.</p>
+          <p>From your first board to a full AI-coding workstation — six pieces, one shared workflow.</p>
         </div>
         <div className="filters">
           {cats.map(c => <button key={c} className={'filter' + (active === c ? ' on' : '')} onClick={() => setActive(c)}>{c}</button>)}
