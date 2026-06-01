@@ -62,14 +62,17 @@ function Device({ kind = 'deck', size = 'lg', screen = 'AGENT · READY' }) {
 }
 
 /* ---------- TOP BAR ---------- */
-function TopBar({ theme, setTheme }) {
+function TopBar({ theme, setTheme, homeHref = '' }) {
+  // homeHref lets nav anchors work from sub-pages (e.g. pass "index.html"
+  // from the kit page so "#catalog" becomes "index.html#catalog")
+  const link = (anchor) => homeHref ? `${homeHref}${anchor}` : anchor;
   return (
     <header className="topbar">
       <div className="wrap topbar-inner">
-        <div className="brand"><span className="mark" /> coder.addons</div>
+        <a className="brand" href={homeHref || '#'}><span className="mark" /> coder.addons</a>
         <nav className="nav">
-          <a href="#catalog">Catalog</a>
-          <a href="#kits">Student Kits</a>
+          <a href={link('#catalog')}>Catalog</a>
+          <a href={link('#kits')}>Student Kits</a>
           <a href="#">Docs</a>
           <a href="#">Community</a>
         </nav>
@@ -190,7 +193,7 @@ function Catalog() {
 const KITS = [
   { kicker: 'Starter', name: 'First Spark', price: '$35', sub: '/ one-time', items: ['micro:bit V2 board', 'USB cable + battery pack', '10-project beginner booklet', 'Classroom-ready presets'], feature: false },
   { kicker: 'Most popular', name: 'Code Companion', price: '$249', sub: '/ one-time', items: ['Raspberry Pi 5 (4GB)', 'Companion Touch 5" panel', 'Pre-installed AI-coding profiles', 'Cable kit + carrying case'], feature: true },
-  { kicker: 'Top tier', name: 'AI Workstation', price: '$599', sub: '/ one-time', items: ['Raspberry Pi 5 (4GB)', 'CodeDesk Touch 10" display', 'AI Mix Console (8 faders + 16 keys)', 'Magnetic desk dock + cable management', 'Pre-mapped knobs for temp / top-p / model blend'], feature: false },
+  { kicker: 'Top tier', name: 'AI Workstation', price: '$599', sub: '/ one-time', href: 'ai-workstation.html', items: ['Raspberry Pi 5 (4GB)', 'CodeDesk Touch 10" display', 'AI Mix Console (8 faders + 16 keys)', 'Magnetic desk dock + cable management', 'Pre-mapped knobs for temp / top-p / model blend'], feature: false },
 ];
 function Kits() {
   return (
@@ -209,7 +212,11 @@ function Kits() {
               <h3>{k.name}</h3>
               <div className="kprice">{k.price} <span>{k.sub}</span></div>
               <ul>{k.items.map(i => <li key={i}>{i}</li>)}</ul>
-              <button className={'btn btn-block ' + (k.feature ? 'btn-primary' : 'btn-ghost')}>Get {k.name}</button>
+              {k.href
+                ? <a href={k.href} className={'btn btn-block ' + (k.feature ? 'btn-primary' : 'btn-ghost')}>See the {k.name}
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                : <button className={'btn btn-block ' + (k.feature ? 'btn-primary' : 'btn-ghost')}>Get {k.name}</button>}
               <span className="stu">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3 2 8l10 5 10-5z"/><path d="M6 11v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg>
                 Classroom-friendly pricing
