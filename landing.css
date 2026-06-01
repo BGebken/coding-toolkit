@@ -219,6 +219,13 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-body);
 .pcard .dev-wrap { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 18px; display: grid; place-items: center; position: relative; }
 .pcard .ptag { position: absolute; top: 12px; left: 12px; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; padding: 4px 9px; border-radius: 999px; background: var(--accent-grad); color: #fff; z-index: 2; }
 .theme-futuristic .pcard .ptag { color: #04121A; }
+/* Notional / concept tag — outlined, muted; signals "idea, not real product" */
+.pcard .ptag.concept { background: transparent; color: var(--muted); border: 1px dashed var(--border-strong); }
+.theme-futuristic .pcard .ptag.concept { color: var(--muted); }
+.pcard.is-concept { border-style: dashed; }
+.pcard.is-concept .price { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+/* real product photo slot (used when p.image is set) */
+.pcard .prod-img { width: 100%; max-height: 168px; object-fit: contain; display: block; filter: drop-shadow(0 14px 28px rgba(0,0,0,.55)); }
 .pcard h3 { font-family: var(--font-display); font-weight: 600; font-size: 18px; margin: 0 0 4px; }
 .pcard .desc { color: var(--muted); font-size: 13.5px; line-height: 1.45; margin: 0 0 14px; min-height: 38px; }
 .pcard .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 16px; }

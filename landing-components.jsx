@@ -143,13 +143,19 @@ const PRODUCTS = [
   { name: 'Adafruit Circuit Playground Express', kind: 'fader', desc: 'A round all-in-one board with lights, sound, motion and touch — no wiring needed to start.', tags: ['10 NeoPixels', 'MakeCode + Python', 'Touch'], price: '$25', tag: 'Wearable', screen: 'TONE · 440' },
   { name: 'Makey Makey', kind: 'pad', desc: 'Turn bananas, foil, or anything conductive into a keyboard. Pure invention magic, no coding needed.', tags: ['Plug & play', 'Web apps', 'No code'], price: '$50', tag: 'Most fun', screen: 'SPACE' },
   { name: 'Raspberry Pi 5 (4GB)', kind: 'deck', desc: 'A tiny full Linux computer. Step up to Python, web servers, AI projects and game emulation.', tags: ['Linux', '4GB RAM', 'HDMI 4K'], price: '$80', tag: 'Power up', screen: 'PI · BOOT' },
+  // Concept / notional hardware — AI-coding ideas, not real products
+  { name: 'Prompt Dial Nano', kind: 'dial', size: 'sm', desc: 'Rapid model-tuning of temperature, top-p and top-k. A pocket rotary that hot-swaps sampling params the second your model starts to drift.', tags: ['USB-C', 'Haptic feedback', 'Pocketable'], price: 'Concept', tag: 'Notional', screen: 'TEMP · 0.7', concept: true },
+  { name: 'Context Deck', kind: 'deck', size: 'md', desc: 'Eight pinnable context bundles — one key per project, persona or memory pack. Slam a key to swap the LLM\'s entire working context in real time.', tags: ['USB-C', '8 keys', 'OLED labels'], price: 'Concept', tag: 'Notional', screen: 'CTX · 03', concept: true },
+  { name: 'Agent Mix Console', kind: 'fader', size: 'lg', desc: 'Three motorized faders to live-balance model weights across a multi-agent run. Mute, solo and automate each agent like channels on a mixing board.', tags: ['USB-C', 'Motorized', 'MIDI out'], price: 'Concept', tag: 'Notional', screen: 'MIX · 3CH', concept: true },
 ];
 function ProductCard({ p }) {
   return (
-    <article className="pcard">
+    <article className={'pcard' + (p.concept ? ' is-concept' : '')}>
       <div className="dev-wrap">
-        {p.tag && <span className="ptag">{p.tag}</span>}
-        <Device3D kind={p.kind} size="card" screen={p.screen} />
+        {p.tag && <span className={'ptag' + (p.concept ? ' concept' : '')}>{p.tag}</span>}
+        {p.image
+          ? <img className="prod-img" src={p.image} alt={p.name} loading="lazy" />
+          : <Device3D kind={p.kind} size={p.size || 'card'} screen={p.screen} />}
       </div>
       <h3>{p.name}</h3>
       <p className="desc">{p.desc}</p>
@@ -300,11 +306,17 @@ function D3Top({ kind, screen }) {
   </>);
 }
 function Device3D({ kind = 'deck', size = 'hero', screen = '' }) {
-  const dims = size === 'hero'
-    ? { '--w': '300px', '--pad': '18px' }
-    : { '--w': '212px', '--pad': '14px' };
+  const DIMS = {
+    hero: { '--w': '300px', '--pad': '18px' },
+    lg:   { '--w': '236px', '--pad': '16px' },
+    md:   { '--w': '212px', '--pad': '14px' },
+    card: { '--w': '212px', '--pad': '14px' },
+    sm:   { '--w': '168px', '--pad': '11px' },
+  };
+  const dims = DIMS[size] || DIMS.card;
+  const stageClass = size === 'hero' ? 's-hero' : 's-card';
   return (
-    <div className={'stage3d ' + (size === 'hero' ? 's-hero' : 's-card')}>
+    <div className={'stage3d ' + stageClass}>
       <div className="d3-glow" />
       <div className="lift">
         <div className="dev3d" style={dims}><D3Top kind={kind} screen={screen} /></div>
