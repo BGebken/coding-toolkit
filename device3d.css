@@ -107,3 +107,14 @@
 .d3-pad { flex: 1; height: 60px; border-radius: 12px; background: var(--key); border: 1px solid var(--edge); box-shadow: 0 5px 0 var(--ext2), inset 0 2px 0 rgba(255,255,255,.14); }
 .stage3d.s-card .d3-pad { height: 46px; }
 .d3-pad.on { background: var(--key-on); box-shadow: 0 5px 0 var(--ext2), 0 0 18px var(--accent), inset 0 2px 0 rgba(255,255,255,.3); }
+
+/* ---------- TOUCHSCREEN ---------- */
+/* status strip across the top of the touch device */
+.d3-touch-status { background: #02050b; }
+/* the device top is a glassy screen with a soft grid of UI tiles */
+.d3-touch-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; flex: 1; padding: 4px 0; }
+.stage3d.s-card .d3-touch-grid { gap: 6px; }
+.touch-tile { aspect-ratio: 1.45; border-radius: 8px; background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02)); border: 1px solid var(--edge); display: grid; place-items: center; color: var(--muted); font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; }
+.stage3d.s-card .touch-tile { font-size: 8px; border-radius: 6px; }
+.touch-tile.on { background: var(--key-on); color: var(--keytext); border-color: transparent; box-shadow: 0 0 14px var(--accent), inset 0 1px 0 rgba(255,255,255,.35); }
+.theme-rainbow .touch-tile.on { box-shadow: 0 0 16px rgba(255,45,175,.7), inset 0 1px 0 rgba(255,255,255,.4); }

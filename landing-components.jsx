@@ -91,8 +91,8 @@ function TopBar({ theme, setTheme }) {
 /* ---------- HERO ---------- */
 function Hero({ theme }) {
   const copy = theme === 'theme-rainbow'
-    ? { eye: 'Spring drop · Maker kits', h: ['Build something ', 'real.'], lede: 'From first LED to first robot — plug-and-play hardware that turns coding into something you can light up, hold, and show off.' }
-    : { eye: 'New · 2026 classroom lineup', h: ['Coding you can ', 'hold.'], lede: 'Real hardware kits for middle-school coders. Plug a board into your laptop, blink an LED, roll a robot — in your first session.' };
+    ? { eye: 'Spring drop · AI workstation kit', h: ['Code faster, ', 'louder.'], lede: 'From your first micro:bit to a full AI-coding workstation. Touchscreens, mixer-style controls and a Pi at the center — hardware that puts every model setting under your fingertips.' }
+    : { eye: 'New · 2026 AI-coding lineup', h: ['Code faster with ', 'hardware.'], lede: 'A middle-school AI-coding workstation. Pair a Raspberry Pi with touchscreens and a mixer-style console to tune models, swap contexts and launch agents — without leaving the keyboard.' };
   return (
     <section className="wrap hero">
       <div>
@@ -106,16 +106,16 @@ function Hero({ theme }) {
           <a className="btn btn-ghost" href="#kits">See student kits</a>
         </div>
         <div className="stat-row">
-          <div className="stat"><div className="n grad-text">6</div><div className="l">boards in lineup</div></div>
-          <div className="stat"><div className="n grad-text">5min</div><div className="l">to first project</div></div>
-          <div className="stat"><div className="n grad-text">$15+</div><div className="l">starter pricing</div></div>
+          <div className="stat"><div className="n grad-text">5</div><div className="l">products in lineup</div></div>
+          <div className="stat"><div className="n grad-text">AI</div><div className="l">tuning, built in</div></div>
+          <div className="stat"><div className="n grad-text">$18+</div><div className="l">starter pricing</div></div>
         </div>
       </div>
       <div className="hero-stage">
         <div className="halo" />
-        <Device3D kind="deck" size="hero" screen={theme === 'theme-rainbow' ? 'PIN13 · HI' : 'LED · BLINK'} />
-        <div className="floatcard fc1"><span className="led" />sensors · on</div>
-        <div className="floatcard fc2"><span className="led" />robot · ready</div>
+        <Device3D kind="deck" size="hero" screen={theme === 'theme-rainbow' ? 'AGENT · LIVE' : 'AI · READY'} />
+        <div className="floatcard fc1"><span className="led" />temp · 0.7</div>
+        <div className="floatcard fc2"><span className="led" />agents · 3</div>
       </div>
     </section>
   );
@@ -137,16 +137,11 @@ function Compat() {
 
 /* ---------- PRODUCTS ---------- */
 const PRODUCTS = [
-  { name: 'Arduino Uno Starter Kit', kind: 'deck', image: './images/arduino-uno.jpg', desc: 'The classic maker board with breadboard, wires, LEDs & sensors — 15 build-along projects.', tags: ['USB-B', 'Block + C++', '15 projects'], price: '$110', tag: 'Best seller', screen: 'PIN13 · HI' },
-  { name: 'Sphero BOLT', kind: 'dial', image: './images/sphero-bolt.jpg', desc: 'A programmable robot ball with LED matrix, sensors and Bluetooth. Code it in blocks or JavaScript.', tags: ['Bluetooth', 'Robot', 'Scratch + JS'], price: '$150', tag: 'Robot pick', screen: 'ROLL · GO' },
-  { name: 'micro:bit V2', kind: 'mini', image: './images/microbit-v2.jpg', desc: 'Pocket-sized board with 25 LEDs, buttons, mic, speaker and motion sensors. Block code, Python or both.', tags: ['25 LEDs', 'Blocks + Python', 'Sensors'], price: '$18', tag: 'Classroom fav', screen: 'HEART' },
-  { name: 'Adafruit Circuit Playground Express', kind: 'fader', image: './images/circuit-playground-express.jpg', desc: 'A round all-in-one board with lights, sound, motion and touch — no wiring needed to start.', tags: ['10 NeoPixels', 'MakeCode + Python', 'Touch'], price: '$25', tag: 'Wearable', screen: 'TONE · 440' },
-  { name: 'Makey Makey', kind: 'pad', image: './images/makey-makey.jpg', desc: 'Turn bananas, foil, or anything conductive into a keyboard. Pure invention magic, no coding needed.', tags: ['Plug & play', 'Web apps', 'No code'], price: '$50', tag: 'Most fun', screen: 'SPACE' },
-  { name: 'Raspberry Pi 5 (4GB)', kind: 'deck', image: './images/raspberry-pi-5.jpg', desc: 'A tiny full Linux computer. Step up to Python, web servers, AI projects and game emulation.', tags: ['Linux', '4GB RAM', 'HDMI 4K'], price: '$80', tag: 'Power up', screen: 'PI · BOOT' },
-  // Concept / notional hardware — AI-coding ideas, not real products
-  { name: 'Prompt Dial Nano', kind: 'dial', size: 'sm', desc: 'Rapid model-tuning of temperature, top-p and top-k. A pocket rotary that hot-swaps sampling params the second your model starts to drift.', tags: ['USB-C', 'Haptic feedback', 'Pocketable'], price: 'Concept', tag: 'Notional', screen: 'TEMP · 0.7', concept: true },
-  { name: 'Context Deck', kind: 'deck', size: 'md', desc: 'Eight pinnable context bundles — one key per project, persona or memory pack. Slam a key to swap the LLM\'s entire working context in real time.', tags: ['USB-C', '8 keys', 'OLED labels'], price: 'Concept', tag: 'Notional', screen: 'CTX · 03', concept: true },
-  { name: 'Agent Mix Console', kind: 'fader', size: 'lg', desc: 'Three motorized faders to live-balance model weights across a multi-agent run. Mute, solo and automate each agent like channels on a mixing board.', tags: ['USB-C', 'Motorized', 'MIDI out'], price: 'Concept', tag: 'Notional', screen: 'MIX · 3CH', concept: true },
+  { name: 'micro:bit V2', kind: 'mini', image: './images/microbit-v2.jpg', desc: 'Pocket-sized board with 25 LEDs, buttons, mic, speaker and motion sensors. Block code, Python or both — the perfect first board.', tags: ['25 LEDs', 'Blocks + Python', 'Sensors'], price: '$18', tag: 'Start here', screen: 'HEART' },
+  { name: 'Raspberry Pi 5 (4GB)', kind: 'deck', image: './images/raspberry-pi-5.jpg', desc: 'A tiny full Linux computer. The brain of your AI-coding workstation — runs local models, agents and a real IDE.', tags: ['Linux', '4GB RAM', 'HDMI 4K'], price: '$80', tag: 'The brain', screen: 'PI · BOOT' },
+  { name: 'Companion Touch 5"', kind: 'touch', size: 'sm', desc: 'A 5" touchscreen companion that lives beside your keyboard. Map prompts, models and code snippets to live touch tiles that swap as you code.', tags: ['5" touch', 'USB-C', 'Live macros'], price: '$120', tag: 'Companion', screen: 'AI · PANEL' },
+  { name: 'CodeDesk Touch 10"', kind: 'touch', size: 'lg', desc: 'A 10.1" multitouch display that pairs with your Pi (or laptop). Full-screen IDE, a panel-of-agents UI, or a giant terminal — your call.', tags: ['10.1" touch', 'USB-C + HDMI', 'Multitouch'], price: '$179', tag: 'Workstation', screen: 'IDE · LIVE' },
+  { name: 'AI Mix Console', kind: 'fader', size: 'lg', desc: 'Mixer-board layout with 8 faders, 8 rotary knobs and 16 programmable keys. Tune temperature, top-p, model blend weights and prompt presets like a producer.', tags: ['8 faders + 16 keys', 'USB-C', 'Per-app profiles'], price: '$249', tag: 'Pro tool', screen: 'MIX · 3CH' },
 ];
 function ProductCard({ p }) {
   return (
@@ -170,14 +165,14 @@ function ProductCard({ p }) {
   );
 }
 function Catalog() {
-  const cats = ['All', 'Boards', 'Robots', 'Wearables', 'Beginner', 'Under $50'];
+  const cats = ['All', 'Boards', 'Touchscreens', 'Controllers', 'Beginner', 'Workstation'];
   const [active, setActive] = useState('All');
   return (
     <section className="wrap section" id="catalog">
       <div className="sec-head">
         <div>
           <h2>The catalog</h2>
-          <p>Plug-and-play hardware kits — pick a board, follow a project, ship your first program.</p>
+          <p>From your first board to a full AI-coding workstation — five pieces, one shared workflow.</p>
         </div>
         <div className="filters">
           {cats.map(c => <button key={c} className={'filter' + (active === c ? ' on' : '')} onClick={() => setActive(c)}>{c}</button>)}
@@ -193,8 +188,8 @@ function Catalog() {
 /* ---------- STUDENT KITS ---------- */
 const KITS = [
   { kicker: 'Starter', name: 'First Spark', price: '$35', sub: '/ one-time', items: ['micro:bit V2 board', 'USB cable + battery pack', '10-project beginner booklet', 'Classroom-ready presets'], feature: false },
-  { kicker: 'Most popular', name: 'Studio', price: '$129', sub: '/ one-time', items: ['micro:bit V2 + Makey Makey', 'Sphero indi (line-following robot)', 'Coding playground curriculum', 'Carrying case + cable kit'], feature: true },
-  { kicker: 'Power', name: 'Maker Bench', price: '$249', sub: '/ one-time', items: ['Arduino Uno + breadboard set', 'Circuit Playground Express', 'Wire kit, sensors, motors', 'Project guides + classroom support'], feature: false },
+  { kicker: 'Most popular', name: 'Code Companion', price: '$249', sub: '/ one-time', items: ['Raspberry Pi 5 (4GB)', 'Companion Touch 5" panel', 'Pre-installed AI-coding profiles', 'Cable kit + carrying case'], feature: true },
+  { kicker: 'Top tier', name: 'AI Workstation', price: '$599', sub: '/ one-time', items: ['Raspberry Pi 5 (4GB)', 'CodeDesk Touch 10" display', 'AI Mix Console (8 faders + 16 keys)', 'Magnetic desk dock + cable management', 'Pre-mapped knobs for temp / top-p / model blend'], feature: false },
 ];
 function Kits() {
   return (
@@ -292,6 +287,22 @@ function D3Top({ kind, screen }) {
         <div className="d3-key">/</div><div className="d3-key on">⚡</div><div className="d3-key">↹</div>
         <div className="d3-key">⌥</div><div className="d3-key on">⌘</div><div className="d3-key">⏎</div>
       </div></div>
+    </>);
+  }
+  if (kind === 'touch') {
+    return (<>
+      <div className="d3-screen d3-touch-status">
+        <span>{screen || 'AI · PANEL'}<span className="cur" /></span>
+        <span className="bars"><i/><i/><i/><i/></span>
+      </div>
+      <div className="d3-touch-grid">
+        <div className="touch-tile on">PROMPT</div>
+        <div className="touch-tile">MODEL</div>
+        <div className="touch-tile">CTX</div>
+        <div className="touch-tile">REGEN</div>
+        <div className="touch-tile on">RUN</div>
+        <div className="touch-tile">DIFF</div>
+      </div>
     </>);
   }
   // deck
