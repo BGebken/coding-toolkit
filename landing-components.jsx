@@ -98,10 +98,9 @@ function Hero({ theme }) {
         <h1>{copy.h[0]}<span className="grad-text">{copy.h[1]}</span></h1>
         <p className="lede">{copy.lede}</p>
         <div className="hero-cta">
-          <a className="btn btn-primary" href="#catalog">Browse the catalog
+          <a className="btn btn-primary" href="ai-workstation.html">Get your AI Workstation
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a className="btn btn-ghost" href="#kits">See student kits</a>
         </div>
         <div className="stat-row">
           <div className="stat"><div className="n grad-text">6</div><div className="l">products in lineup</div></div>
