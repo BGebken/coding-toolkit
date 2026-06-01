@@ -4,7 +4,7 @@
 /* ---------- STAGE ---------- */
 .stage3d { position: relative; display: grid; place-items: center; width: 100%; }
 .stage3d.s-hero { height: 372px; }
-.stage3d.s-card { height: 200px; }
+.stage3d.s-card { height: 220px; }
 
 .lift { animation: d3-float 6.5s ease-in-out infinite; will-change: transform; }
 @keyframes d3-float { 0%,100% { transform: translateY(2px); } 50% { transform: translateY(-12px); } }
